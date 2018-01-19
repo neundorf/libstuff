@@ -15,6 +15,7 @@ class EXPORT Base
     virtual ~Base() { std::cerr << "Base dtor" << std::endl; }
     virtual void foo() { std::cerr << "Base::foo()" << std::endl; }
     virtual void bar() { std::cerr << "Base::bar()" << std::endl; }
+    void fump() {  std::cerr << "Base::fump()" << std::endl; }
 };
 
 
@@ -51,15 +52,10 @@ int main(int argc, char** argv)
 {
   std::cerr << "main starts" << std::endl;
 
-  if (argc != 2)
-  {
-    std::cerr << "argc=" << argc << "!" << std::endl;
-    return -1;
-  }
-
   Base* b = new Derived();
   b->foo();
   b->bar();
+  b->fump();
   
 
   QLibrary* p1 = loadAndExecLib("libp1", "callme1", 2);
