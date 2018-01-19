@@ -3,43 +3,23 @@
 #include <iostream>
 #include <vector>
 
-// class FooSingle
-// {
-//   public:
-//     static FooSingle* getInstance();
-//     void foo()
-//     {
-//       std::cerr << "=== FooSingle::foo()" << std::endl;
-//     }
-//   private:
-//     FooSingle()
-//     {
-//       std::cerr << "=== FooSingle this=" << (void*)this << std::endl;
-//     }
-// };
-// 
-// FooSingle* FooSingle::getInstance()
-// {
-//   static FooSingle* fs = 0;
-//   if (fs == 0)
-//   {
-//     fs = new FooSingle();
-//   }
-//   std::cerr << "=== FooSingle getInstance() fs=" << (void*)fs << std::endl;
-//   return fs;
-// }
+#ifdef STATIC
+#  define LIB_TYPE_STRING "STATIC"
+#else
+#  define LIB_TYPE_STRING "SHARED"
+#endif
 
 struct FooInitStruct
 {
   FooInitStruct()
   :m_foo(123)
   {
-    std::cerr << "=== libfoo: FooInit ctor " << (void*)this << " m_foo=" << m_foo << std::endl;
+    std::cerr << "=== " LIB_TYPE_STRING " libfoo: FooInit ctor " << (void*)this << " m_foo=" << m_foo << std::endl;
   }
   
   ~FooInitStruct()
   {
-    std::cerr << "=== libfoo: FooInit dtor "<< (void*)this << "  m_foo=" << m_foo << std::endl;
+    std::cerr << "=== " LIB_TYPE_STRING " libfoo: FooInit dtor "<< (void*)this << "  m_foo=" << m_foo << std::endl;
     m_foo = 0;
   }
   
