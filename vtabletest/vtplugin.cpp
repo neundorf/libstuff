@@ -1,29 +1,6 @@
+#include "pluginclasses.h"
 
 #include <iostream>
-
-// #define EXPORT  __attribute__((visibility("hidden")))
-#define EXPORT 
-
-class EXPORT Base
-{
-  public:
-    Base() { std::cerr << "--- PLUGIN Base ctor" << std::endl; }
-    virtual ~Base() { std::cerr << "--- PLUGIN Base dtor" << std::endl; }
-    virtual void foo() { std::cerr << "--- PLUGIN Base::foo()" << std::endl; }
-    virtual void bar() { std::cerr << "--- PLUGIN Base::bar()" << std::endl; }
-    void fump() {  std::cerr << "--- PLUGIN: Base::fump()" << std::endl; }
-};
-
-
-class EXPORT Derived : public Base
-{
-  public:
-    Derived() : Base() { std::cerr << "--- PLUGIN Derived ctor" << std::endl; }
-    virtual ~Derived() { std::cerr << "--- PLUGIN Derived dtor" << std::endl; }
-    virtual void foo() { std::cerr << "--- PLUGIN Derived::foo()" << std::endl; }
-    virtual void bar() { std::cerr << "--- PLUGIN Derived::bar()" << std::endl; }
-};
-
 
 extern "C"
 {

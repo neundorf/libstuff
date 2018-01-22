@@ -6,5 +6,5 @@ add_executable(vtabletester main.cpp)
 target_link_libraries(vtabletester Qt4::QtCore )
 
 
-add_library(vtplugin SHARED vtplugin.cpp)
+add_library(vtplugin SHARED vtplugin.cpp pluginclasses.cpp)
 #target_link_libraries(vtplugin ${FOOSHARED_LIB} )
