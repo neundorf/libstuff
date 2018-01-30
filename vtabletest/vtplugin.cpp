@@ -13,6 +13,7 @@ int callme1(int i)
   Base* b = new Derived();
   b->foo();
   b->bar();
+  b->fump();
   delete b;
 
   return f;
